@@ -1,4 +1,4 @@
-# mdownload
+# DSDownload
 It is a small library to multi-threaded downloads. This means that it can generate a queue and download several files simultaneously
 
 ## Requirements
@@ -8,7 +8,7 @@ It is a small library to multi-threaded downloads. This means that it can genera
 ## Usage
 
 ```bash
-mdownload.py [-h] [--threads THREADS] [--output OUTPUT] urls [urls ...]
+DSDownload.py [-h] [--threads THREADS] [--output OUTPUT] urls [urls ...]
 
 It is a small library to multi-threaded downloads.This means that it can
 generate a queue and download several files simultaneously
@@ -24,17 +24,17 @@ optional arguments:
 
 ###Example 1
 ```bash
- python mdownload.py https://i.imgur.com/eUrbKtO.jpg
+ python DSDownload.py https://i.imgur.com/eUrbKtO.jpg
 ```
 ###Example 2
 ```bash
- python mdownload.py --threads 2 https://i.imgur.com/eUrbKtO.jpg https://i.imgur.com/9am20SK.jpg https://i.imgur.com/KR06C.jpg
+ python DSDownload.py --threads 2 https://i.imgur.com/eUrbKtO.jpg https://i.imgur.com/9am20SK.jpg https://i.imgur.com/KR06C.jpg
 ```
 ###Example 3
 ```bash
- python mdownload.py --threads 2 --output myimages https://i.imgur.com/eUrbKtO.jpg https://i.imgur.com/9am20SK.jpg https://i.imgur.com/KR06C.jpg
+ python DSDownload.py --threads 2 --output myimages https://i.imgur.com/eUrbKtO.jpg https://i.imgur.com/9am20SK.jpg https://i.imgur.com/KR06C.jpg
 ```
 
 ## Find a bug/issue or simply want to request a new feature?
 
-[Create a Github issue/feature request!](https://github.com/DiSiqueira/mdownload/issues/new)
+[Create a Github issue/feature request!](https://github.com/DiSiqueira/DSDownload/issues/new)

@@ -3,7 +3,7 @@
 """
 Diego Martins de Siqueira
 MIT License
-mdownload - It is a small library to multi-threaded downloads.
+DSDownload - It is a small library to multi-threaded downloads.
 """
 
 import Queue
@@ -11,7 +11,7 @@ import downloadthread
 import sys
 import argparse
 
-def mdownload(urlList, workers = 5, folderPath = 'downloads'):
+def DSDownload(urlList, workers = 5, folderPath = 'downloads'):
     queue = Queue.Queue()
 
     for url in urlList:
@@ -37,7 +37,7 @@ def main(argv=sys.argv[0]):
     args = parser.parse_args()
 
     try:
-        mdownload(args.urls, args.threads, args.output)
+        DSDownload(args.urls, args.threads, args.output)
         print 'All files were downloaded.'
     except KeyboardInterrupt:
         print 'Interrupt received, stopping downloads'
