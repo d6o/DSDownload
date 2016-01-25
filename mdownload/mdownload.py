@@ -23,7 +23,7 @@ def mdownload(urlList, workers = 5, folderPath = 'downloads'):
 
     queue.join()
 
-def main(argv):
+def main(argv=sys.argv[0]):
     description =   "It is a small library to multi-threaded downloads."
     description +=  "This means that it can generate a queue and download several files simultaneously"
     parser = argparse.ArgumentParser(description = description)
