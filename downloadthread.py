@@ -14,19 +14,19 @@ class downloadthread(threading.Thread):
     def __init__(self, queue, destFolder = 'downloads'):
         super(downloadthread, self).__init__()
 
-        self._queue 		= queue
-        self._destFolder 	= destFolder
+        self._queue         = queue
+        self._destFolder    = destFolder
         self.daemon         = True
 
-        self._handlefolder()
+        self._handlefolder(self._destFolder)
 
-    def _handlefolder(self):
+    def _handlefolder(self, folder):
         '''
             if folder does not exist, create it.
         '''
 
-        if not os.path.exists(self._destFolder):
-            os.makedirs(self._destFolder)
+        if not os.path.exists(folder):
+            os.makedirs(folder)
 
     def run(self):
         while True:
@@ -38,7 +38,20 @@ class downloadthread(threading.Thread):
             self._queue.task_done()
 
     def download_url(self, url):
-    	name = url.split('/')[-1]
-        dest = os.path.join(self._destFolder, name)
+
+        folder = self._destFolder
+
+        if type(url) is dict:
+            folder  = os.path.join(folder, url['folder'])
+            url     = url['url']
+
+        self._handlefolder(folder)
+
+        name = url.split('/')[-1]
+
+        if name == 'zip':
+            name = url.split('/')[-2] + '.zip'
+
+        dest = os.path.join(folder, name)
         print "[%s] Downloading %s"%(self.ident, name)
         urllib.urlretrieve(url, dest)
