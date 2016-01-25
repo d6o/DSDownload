@@ -10,5 +10,4 @@ setup(
   download_url = 'https://github.com/DiSiqueira/mdownload/tarball/0.3', # I'll explain this in a second
   keywords = ['download', 'thread', 'speed', 'resume', 'multi', 'simple'], # arbitrary keywords
   classifiers = [],
-  scripts=["mdownload/mdownload.py"],
 )
