@@ -18,7 +18,7 @@ Easily download files in the fastest speed possible. Up to 452% faster than trad
 
 ## Installation
 
-### Option 1: [Pip](https://pypi.python.org/pypi/joe)
+### Option 1: [Pip](https://pip.pypa.io/en/stable/installing/)
 
 ```bash
 $ pip install DSDownload
