@@ -37,19 +37,22 @@ $ python setup.py install
 ### Basic usage
 
 ```bash
-$ dsdownload https://i.imgur.com/eUrbKtO.jpg    # Download a file
+# Download a file
+$ dsdownload https://i.imgur.com/eUrbKtO.jpg
 ```
 
 ### Download using Workers
 
 ```bash
-$ dsdownload --workers 2 https://i.imgur.com/eUrbKtO.jpg https://i.imgur.com/9am20SK.jpg https://i.imgur.com/KR06C.jpg    # download 3 files using 2 Workers
+# Download 3 files using 2 Workers
+$ dsdownload --workers 2 https://i.imgur.com/eUrbKtO.jpg https://i.imgur.com/9am20SK.jpg https://i.imgur.com/KR06C.jpg
 ```
 
 ### Combine everything
 
 ```bash
-$ dsdownload --output my-images --workers 2 https://i.imgur.com/eUrbKtO.jpg https://i.imgur.com/9am20SK.jpg https://i.imgur.com/KR06C.jpg    # Download 3 files using 2 Workers and put on my-images folder
+# Download 3 files using 2 Workers and put on my-images folder
+$ dsdownload --output my-images --workers 2 https://i.imgur.com/eUrbKtO.jpg https://i.imgur.com/9am20SK.jpg https://i.imgur.com/KR06C.jpg
 ```
 
 ## Program Help
