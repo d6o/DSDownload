@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Dsdownload : Easily download files in the fastest speed possible. Up to 452% faster than traditional download using Multi-Threaded Downloads">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Dsdownload</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/DiSiqueira/DSDownload">View on GitHub</a>
+
+          <h1 id="project_title">Dsdownload</h1>
+          <h2 id="project_tagline">Easily download files in the fastest speed possible. Up to 452% faster than traditional download using Multi-Threaded Downloads</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/DiSiqueira/DSDownload/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/DiSiqueira/DSDownload/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="dsdownload----" class="anchor" href="#dsdownload----" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>DSDownload <img src="https://img.shields.io/badge/Language-Python-red.svg" alt="Language Badge"> <img src="https://img.shields.io/badge/Dependencies-None-brightgreen.svg" alt="Dependencies Badge"> <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License Badge"> <img src="https://img.shields.io/badge/Status-Stable-brightgreen.svg" alt="Status Badge">
+</h1>
+
+<p>Easily download files in the fastest speed possible. Up to 452% faster than traditional download using Multi-Threaded Downloads</p>
+
+<p><img src="https://i.imgur.com/ytEp7fG.gif" alt="How to use"></p>
+
+<h2>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Features</h2>
+
+<ul>
+<li>Can be used as script and module</li>
+<li>Written in uncomplicated Python</li>
+<li>Easily download files in the fastest speed possible</li>
+<li>Up to 452% faster than traditional download using Multi-Threaded Downloads</li>
+<li>Easy to <a href="https://github.com/DiSiqueira/DSDownload#installation">install</a>
+</li>
+<li>Stupidly <a href="https://github.com/DiSiqueira/DSDownload#usage">easy to use</a>
+</li>
+<li>Very fast start up and response time</li>
+<li>Uses natives libs</li>
+<li>Option to organize your files</li>
+<li>Download 100 files in less than 40s</li>
+<li>Download files from everywhere</li>
+</ul>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<h3>
+<a id="option-1-pip" class="anchor" href="#option-1-pip" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Option 1: <a href="https://pip.pypa.io/en/stable/installing/">Pip</a>
+</h3>
+
+<div class="highlight highlight-source-shell"><pre>$ pip install DSDownload</pre></div>
+
+<h3>
+<a id="option-2-from-source" class="anchor" href="#option-2-from-source" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Option 2: From source</h3>
+
+<div class="highlight highlight-source-shell"><pre>$ git clone https://github.com/DiSiqueira/DSDownload.git
+$ <span class="pl-c1">cd</span> DSDownload/
+$ python setup.py install</pre></div>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<h3>
+<a id="basic-usage" class="anchor" href="#basic-usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Basic usage</h3>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># Download a file</span>
+$ dsdownload https://github.com/DiSiqueira/DSDownload/archive/1.4.0.1.tar.gz</pre></div>
+
+<h3>
+<a id="download-using-workers" class="anchor" href="#download-using-workers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Download using Workers</h3>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># Download 3 files using 2 Workers</span>
+$ dsdownload --workers 2 https://i.imgur.com/eUrbKtO.jpg https://i.imgur.com/9am20SK.jpg https://github.com/DiSiqueira/DSDownload/archive/1.4.0.1.tar.gz</pre></div>
+
+<h3>
+<a id="combine-everything" class="anchor" href="#combine-everything" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Combine everything</h3>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># Download 3 files using 2 Workers and put on my-images folder</span>
+$ dsdownload --output my-images --workers 2 https://github.com/DiSiqueira/DSDownload/archive/1.4.0.1.tar.gz https://i.imgur.com/9am20SK.jpg https://i.imgur.com/KR06C.jpg</pre></div>
+
+<h2>
+<a id="module-usage" class="anchor" href="#module-usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Module Usage</h2>
+
+<p>The module allows you to download url lists in your own Python programs without going through the command line. Here's an example of it's usage:</p>
+
+<h3>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example</h3>
+
+<div class="highlight highlight-source-python"><pre><span class="pl-k">from</span> DSDownload <span class="pl-k">import</span> DSDownload
+
+urls <span class="pl-k">=</span> [<span class="pl-s"><span class="pl-pds">'</span>https://i.imgur.com/eUrbKtO.jpg<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>https://github.com/DiSiqueira/DSDownload/archive/1.4.0.1.tar.gz<span class="pl-pds">'</span></span>]
+workers <span class="pl-k">=</span> <span class="pl-c1">2</span>
+output <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>My-Files<span class="pl-pds">'</span></span>
+
+DSDownload.DSDownload(urls, workers, output)</pre></div>
+
+<h2>
+<a id="program-help" class="anchor" href="#program-help" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Program Help</h2>
+
+<p><img src="https://i.imgur.com/0EXBDFM.png" alt="Program Help"></p>
+
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contributing</h2>
+
+<h3>
+<a id="bug-reports--feature-requests" class="anchor" href="#bug-reports--feature-requests" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Bug Reports &amp; Feature Requests</h3>
+
+<p>Please use the <a href="https://github.com/DiSiqueira/DSDownload/issues">issue tracker</a> to report any bugs or file feature requests.</p>
+
+<h3>
+<a id="developing" class="anchor" href="#developing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Developing</h3>
+
+<p>PRs are welcome. To begin developing, do this:</p>
+
+<div class="highlight highlight-source-shell"><pre>$ git clone --recursive git@github.com:DiSiqueira/DSDownload.git
+$ <span class="pl-c1">cd</span> DSDownload/DSDownload/
+$ python DSDownload.py</pre></div>
+
+<h2>
+<a id="social-coding" class="anchor" href="#social-coding" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Social Coding</h2>
+
+<ol>
+<li>Create an issue to discuss about your idea</li>
+<li><a href="https://github.com/DiSiqueira/DSDownload/fork">Fork it</a></li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create a new Pull Request</li>
+<li>Profit! <img class="emoji" title=":white_check_mark:" alt=":white_check_mark:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png" height="20" width="20" align="absmiddle">
+</li>
+</ol>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p>The MIT License (MIT)</p>
+
+<p>Copyright (c) 2013-2015 Diego Siqueira</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Dsdownload maintained by <a href="https://github.com/DiSiqueira">DiSiqueira</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
