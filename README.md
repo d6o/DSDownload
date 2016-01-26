@@ -6,6 +6,7 @@ Easily download files in the fastest speed possible. Up to 452% faster than trad
 
 ## Features
 
+- Can be used as script and module
 - Written in uncomplicated Python
 - Easily download files in the fastest speed possible
 - Up to 452% faster than traditional download using Multi-Threaded Downloads
@@ -15,6 +16,7 @@ Easily download files in the fastest speed possible. Up to 452% faster than trad
 - Uses natives libs
 - Option to organize your files
 - Download 100 files in less than 40s
+- Download files from everywhere
 
 ## Installation
 
@@ -38,21 +40,35 @@ $ python setup.py install
 
 ```bash
 # Download a file
-$ dsdownload https://i.imgur.com/eUrbKtO.jpg
+$ dsdownload https://github.com/DiSiqueira/DSDownload/archive/1.4.0.1.tar.gz
 ```
 
 ### Download using Workers
 
 ```bash
 # Download 3 files using 2 Workers
-$ dsdownload --workers 2 https://i.imgur.com/eUrbKtO.jpg https://i.imgur.com/9am20SK.jpg https://i.imgur.com/KR06C.jpg
+$ dsdownload --workers 2 https://i.imgur.com/eUrbKtO.jpg https://i.imgur.com/9am20SK.jpg https://github.com/DiSiqueira/DSDownload/archive/1.4.0.1.tar.gz
 ```
 
 ### Combine everything
 
 ```bash
 # Download 3 files using 2 Workers and put on my-images folder
-$ dsdownload --output my-images --workers 2 https://i.imgur.com/eUrbKtO.jpg https://i.imgur.com/9am20SK.jpg https://i.imgur.com/KR06C.jpg
+$ dsdownload --output my-images --workers 2 https://github.com/DiSiqueira/DSDownload/archive/1.4.0.1.tar.gz https://i.imgur.com/9am20SK.jpg https://i.imgur.com/KR06C.jpg
+```
+
+## Module Usage
+The module allows you to download url lists in your own Python programs without going through the command line. Here's an example of it's usage:
+
+###Example
+```python
+from DSDownload import DSDownload
+
+urls = ['https://i.imgur.com/eUrbKtO.jpg', 'https://github.com/DiSiqueira/DSDownload/archive/1.4.0.1.tar.gz']
+workers = 2
+output = 'My-Files'
+
+DSDownload.DSDownload(urls, workers, output)
 ```
 
 ## Program Help
