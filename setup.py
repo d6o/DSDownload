@@ -1,5 +1,5 @@
 
-from config import version, description, name
+from DSDownload.config import version, description, name
 from distutils.core import setup
 
 setup(

@@ -1,4 +1,4 @@
 name = 'DSDownload'
-version = '1.4.0.1'
+version = '1.4.1.0'
 
-description = "DSDownload is a fully featured download library with focus on performance"
+description = "Easily download files in the fastest speed possible. Up to 452% faster than traditional download using Multi-Threaded Downloads"

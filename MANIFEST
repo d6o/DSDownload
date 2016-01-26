@@ -3,4 +3,5 @@ setup.cfg
 setup.py
 DSDownload/DSDownload.py
 DSDownload/__init__.py
+DSDownload/config.py
 DSDownload/downloadthread.py
