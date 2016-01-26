@@ -1,4 +1,4 @@
-# DSDownload
+# DSDownload ![Language Badge](https://img.shields.io/badge/Language-Python-red.svg) ![Dependencies Badge](https://img.shields.io/badge/Dependencies-None-brightgreen.svg) ![License Badge](https://img.shields.io/badge/License-MIT-blue.svg) ![Status Badge](https://img.shields.io/badge/Status-Stable-brightgreen.svg)
 
 Easily download files in the fastest speed possible. Up to 452% faster than traditional download using Multi-Threaded Downloads
 
