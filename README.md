@@ -1,5 +1,5 @@
 # DSDownload
-It is a small library to multi-threaded downloads. This means that it can generate a queue and download several files simultaneously
+DSDownload is a fully featured download library with focus on performance
 
 ## Requirements
 

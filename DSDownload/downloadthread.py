@@ -3,14 +3,30 @@
 """
 Diego Martins de Siqueira
 MIT License
-mdownload
+DSDownload - DSDownload is a fully featured download library with focus on performance
 """
 
 import threading
 import os
 import urllib
-
+    
 class downloadthread(threading.Thread):
+
+    colors = [
+        '\033[91m',
+        '\033[92m',
+        '\033[94m',
+        '\033[96m',
+        '\033[97m',
+        '\033[93m',
+        '\033[95m',
+        '\033[90m',
+        '\033[90m',
+        '\033[99m',
+    ]
+
+    color_reset = '\033[0m'
+
     def __init__(self, queue, destFolder = 'downloads'):
         super(downloadthread, self).__init__()
 
@@ -37,6 +53,12 @@ class downloadthread(threading.Thread):
                 print "   Error: %s"%e
             self._queue.task_done()
 
+    def getColor(self,num):
+
+        num = int(num) % len(self.colors)
+
+        return self.colors[num]
+
     def download_url(self, url):
 
         folder = self._destFolder
@@ -52,6 +74,7 @@ class downloadthread(threading.Thread):
         if name == 'zip':
             name = url.split('/')[-2] + '.zip'
 
-        dest = os.path.join(folder, name)
-        print "[%s] Downloading %s"%(self.ident, name)
+        dest    = os.path.join(folder, name)
+        wnum    = threading.current_thread().name.split('-')[-1]
+        print   self.getColor(wnum) + "[Worker " + wnum + "] Downloading " + name + self.color_reset
         urllib.urlretrieve(url, dest)

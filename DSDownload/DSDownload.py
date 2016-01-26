@@ -3,13 +3,14 @@
 """
 Diego Martins de Siqueira
 MIT License
-DSDownload - It is a small library to multi-threaded downloads.
+DSDownload - DSDownload is a fully featured download library with focus on performance
 """
 
 import Queue
 import downloadthread
 import sys
 import argparse
+from config import version, description
 
 def DSDownload(urlList, workers = 5, folderPath = 'downloads'):
     queue = Queue.Queue()
@@ -24,10 +25,12 @@ def DSDownload(urlList, workers = 5, folderPath = 'downloads'):
     queue.join()
 
 def main(argv=sys.argv[0]):
-    description =   "It is a small library to multi-threaded downloads."
-    description +=  "This means that it can generate a queue and download several files simultaneously"
-    parser = argparse.ArgumentParser(description = description)
-    parser.add_argument("--threads", type=int, default=5, 
+    description =   "DSDownload is a fully featured download library with focus on performance"
+    parser = argparse.ArgumentParser(
+        description = description)
+    parser.add_argument("--version", action="version", version=version,
+        help="Version Info")
+    parser.add_argument("--workers", type=int, default=5, 
         help="Number of parallel downloads. The default is 5.")
     parser.add_argument("--output", type=str, default="downloads", 
         help="Output folder")
@@ -37,7 +40,7 @@ def main(argv=sys.argv[0]):
     args = parser.parse_args()
 
     try:
-        DSDownload(args.urls, args.threads, args.output)
+        DSDownload(args.urls, args.workers, args.output)
         print 'All files were downloaded.'
     except KeyboardInterrupt:
         print 'Interrupt received, stopping downloads'
