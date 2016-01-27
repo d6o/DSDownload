@@ -68,7 +68,7 @@ urls = ['https://i.imgur.com/eUrbKtO.jpg', 'https://github.com/DiSiqueira/DSDown
 workers = 2
 output = 'My-Files'
 
-DSDownload.DSDownload(urls, workers, output)
+DSDownload(urls, workers, output)
 ```
 
 ## Program Help
