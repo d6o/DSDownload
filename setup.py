@@ -1,22 +1,23 @@
 
-from DSDownload.config import version, description, name
-from distutils.core import setup
+from setuptools import setup
 
 setup(
-  name = name,
-  packages = [name], 
-  version = version,
-  description = description,
+  name = 'DSDownload',
+  version = '1.4.2.0',
+  description = 'Easily download files in the fastest speed possible. Up to 452% faster than traditional download using Multi-Threaded Downloads',
+  url = 'https://github.com/DiSiqueira/DSDownload',
   author = 'Diego Siqueira',
   author_email = 'dieg0@live.com',
-  url = 'https://github.com/DiSiqueira/DSDownload', 
-  download_url = 'https://github.com/DiSiqueira/DSDownload/tarball/'+version, 
+  license = 'MIT',
+  package_dir = { 'DSDownload' : 'src' },
+  packages = [ 'DSDownload' ],
+  zip_safe = False, 
   keywords = ['download', 'thread', 'speed', 'resume', 'multi', 'simple'],
-  classifiers = [],
-  license='MIT',
-  entry_points = {
-          'console_scripts': [
-              'dsdownload = DSDownload.DSDownload:main',                  
-          ],              
-      },
+  entry_points = 
+  {
+      'console_scripts': 
+      [
+          'dsdownload = DSDownload:main',
+      ],
+  },
 )

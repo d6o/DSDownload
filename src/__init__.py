@@ -5,35 +5,16 @@ Diego Martins de Siqueira
 MIT License
 DSDownload - DSDownload is a fully featured download library with focus on performance
 """
-import sys
 
-if sys.version_info[0] == 2:
-    import Queue
-else:
-    import queue as Queue
-
-import downloadthread
 import sys
 import argparse
-from config import version, description
-
-def DSDownload(urlList, workers = 5, folderPath = 'downloads'):
-    queue = Queue.Queue()
-
-    for url in urlList:
-        queue.put(url)
-
-    for worker in range(workers):
-        t = downloadthread.downloadthread(queue, folderPath)
-        t.start()
-
-    queue.join()
+from DSDownload import DSDownload
 
 def main(argv=sys.argv[0]):
     description =   "DSDownload is a fully featured download library with focus on performance"
     parser = argparse.ArgumentParser(
         description = description)
-    parser.add_argument("--version", action="version", version=version,
+    parser.add_argument("--version", action="version", version='1.4.2.0',
         help="Version Info")
     parser.add_argument("--workers", type=int, default=5, 
         help="Number of parallel downloads. The default is 5.")
