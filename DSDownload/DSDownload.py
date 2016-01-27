@@ -5,8 +5,13 @@ Diego Martins de Siqueira
 MIT License
 DSDownload - DSDownload is a fully featured download library with focus on performance
 """
+import sys
 
-import Queue
+if sys.version_info[0] == 2:
+    import Queue
+else:
+    import queue as Queue
+
 import downloadthread
 import sys
 import argparse
@@ -18,7 +23,7 @@ def DSDownload(urlList, workers = 5, folderPath = 'downloads'):
     for url in urlList:
         queue.put(url)
 
-    for i in range(workers):
+    for worker in range(workers):
         t = downloadthread.downloadthread(queue, folderPath)
         t.start()
 
@@ -41,9 +46,9 @@ def main(argv=sys.argv[0]):
 
     try:
         DSDownload(args.urls, args.workers, args.output)
-        print 'All files were downloaded.'
+        print('All files were downloaded.')
     except KeyboardInterrupt:
-        print 'Interrupt received, stopping downloads'
+        print('Interrupt received, stopping downloads')
 
     sys.exit()
 
