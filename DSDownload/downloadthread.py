@@ -5,10 +5,14 @@ Diego Martins de Siqueira
 MIT License
 DSDownload - DSDownload is a fully featured download library with focus on performance
 """
+import sys
 
+if sys.version_info[0] == 2:
+    import urllib
+else:
+    import urllib.request as urllib
 import threading
 import os
-import urllib
     
 class downloadthread(threading.Thread):
 
@@ -49,8 +53,8 @@ class downloadthread(threading.Thread):
             url = self._queue.get()
             try:
                 self.download_url(url)
-            except Exception,e:
-                print "   Error: %s"%e
+            except Exception as e:
+                print("Error: {0}".format(e))
             self._queue.task_done()
 
     def getColor(self,num):
@@ -64,8 +68,8 @@ class downloadthread(threading.Thread):
         folder = self._destFolder
 
         if type(url) is dict:
-            folder  = os.path.join(folder, url['folder'])
-            url     = url['url']
+            folder = os.path.join(folder, url['folder'])
+            url = url['url']
 
         self._handlefolder(folder)
 
@@ -74,7 +78,7 @@ class downloadthread(threading.Thread):
         if name == 'zip':
             name = url.split('/')[-2] + '.zip'
 
-        dest    = os.path.join(folder, name)
-        wnum    = threading.current_thread().name.split('-')[-1]
-        print   self.getColor(wnum) + "[Worker " + wnum + "] Downloading " + name + self.color_reset
+        dest = os.path.join(folder, name)
+        wnum = threading.current_thread().name.split('-')[-1]
+        print(self.getColor(wnum) + "[Worker " + wnum + "] Downloading " + name + self.color_reset)
         urllib.urlretrieve(url, dest)
