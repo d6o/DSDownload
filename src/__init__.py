@@ -8,13 +8,14 @@ DSDownload - DSDownload is a fully featured download library with focus on perfo
 
 import sys
 import argparse
+import logging
 from DSDownload import DSDownload
 
 def main(argv=sys.argv[0]):
     description =   "DSDownload is a fully featured download library with focus on performance"
     parser = argparse.ArgumentParser(
         description = description)
-    parser.add_argument("--version", action="version", version='1.4.2.0',
+    parser.add_argument("--version", action="version", version='1.6.0.0',
         help="Version Info")
     parser.add_argument("--workers", type=int, default=5, 
         help="Number of parallel downloads. The default is 5.")
@@ -22,8 +23,13 @@ def main(argv=sys.argv[0]):
         help="Output folder")
     parser.add_argument('urls', type=str, nargs='+',
         help='URLs to be downloaded')
+    parser.add_argument("-v", "--verbose", action="store_true",
+        help="increase output verbosity")
 
     args = parser.parse_args()
+
+    if args.verbose:
+        logging.basicConfig(level=logging.DEBUG)
 
     try:
         DSDownload(args.urls, args.workers, args.output)

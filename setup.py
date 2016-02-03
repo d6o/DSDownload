@@ -3,8 +3,8 @@ from setuptools import setup
 
 setup(
   name = 'DSDownload',
-  version = '1.4.2.0',
-  description = 'Easily download files in the fastest speed possible. Up to 452% faster than traditional download using Multi-Threaded Downloads',
+  version = '1.6.0.0',
+  description = 'Program and module for download queue optimization using multi-thread.',
   url = 'https://github.com/DiSiqueira/DSDownload',
   author = 'Diego Siqueira',
   author_email = 'dieg0@live.com',
