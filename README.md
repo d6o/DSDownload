@@ -17,6 +17,7 @@ Program and module for download queue optimization using multi-thread
 - Download 100 files in less than 40s
 - Download files from everywhere
 - Get real filename
+- Supports HTTPS
 
 ## Installation
 
@@ -73,7 +74,7 @@ DSDownload(urls, workers, output)
 
 ## Program Help
 
-![](https://i.imgur.com/0EXBDFM.png)
+![](https://i.imgur.com/NTzkmKJ.png)
 
 ## Contributing
 
