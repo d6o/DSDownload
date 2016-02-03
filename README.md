@@ -1,6 +1,6 @@
 # DSDownload ![Language Badge](https://img.shields.io/badge/Language-Python-red.svg) ![Dependencies Badge](https://img.shields.io/badge/Dependencies-None-brightgreen.svg) ![License Badge](https://img.shields.io/badge/License-MIT-blue.svg) ![Status Badge](https://img.shields.io/badge/Status-Stable-brightgreen.svg)
 
-Easily download files in the fastest speed possible. Up to 452% faster than traditional download using Multi-Threaded Downloads
+Program and module for download queue optimization using multi-thread
 
 ![](https://i.imgur.com/ytEp7fG.gif)
 
@@ -9,7 +9,6 @@ Easily download files in the fastest speed possible. Up to 452% faster than trad
 - Can be used as script and module
 - Written in uncomplicated Python
 - Easily download files in the fastest speed possible
-- Up to 452% faster than traditional download using Multi-Threaded Downloads
 - Easy to [install](https://github.com/DiSiqueira/DSDownload#installation)
 - Stupidly [easy to use](https://github.com/DiSiqueira/DSDownload#usage)
 - Very fast start up and response time
@@ -17,6 +16,8 @@ Easily download files in the fastest speed possible. Up to 452% faster than trad
 - Option to organize your files
 - Download 100 files in less than 40s
 - Download files from everywhere
+- Get real filename
+- Supports HTTPS
 
 ## Installation
 
@@ -40,21 +41,21 @@ $ python setup.py install
 
 ```bash
 # Download a file
-$ dsdownload https://github.com/DiSiqueira/DSDownload/archive/1.4.0.1.tar.gz
+$ dsdownload https://github.com/DiSiqueira/DSDownload/archive/1.6.0.0.tar.gz
 ```
 
 ### Download using Workers
 
 ```bash
 # Download 3 files using 2 Workers
-$ dsdownload --workers 2 https://i.imgur.com/eUrbKtO.jpg https://i.imgur.com/9am20SK.jpg https://github.com/DiSiqueira/DSDownload/archive/1.4.0.1.tar.gz
+$ dsdownload --workers 2 https://i.imgur.com/eUrbKtO.jpg https://i.imgur.com/9am20SK.jpg https://github.com/DiSiqueira/DSDownload/archive/1.6.0.0.tar.gz
 ```
 
 ### Combine everything
 
 ```bash
 # Download 3 files using 2 Workers and put on my-images folder
-$ dsdownload --output my-images --workers 2 https://github.com/DiSiqueira/DSDownload/archive/1.4.0.1.tar.gz https://i.imgur.com/9am20SK.jpg https://i.imgur.com/KR06C.jpg
+$ dsdownload --output my-images --workers 2 https://github.com/DiSiqueira/DSDownload/archive/1.6.0.0.tar.gz https://i.imgur.com/9am20SK.jpg https://i.imgur.com/KR06C.jpg
 ```
 
 ## Module Usage
@@ -64,7 +65,7 @@ The module allows you to download url lists in your own Python programs without 
 ```python
 from DSDownload import DSDownload
 
-urls = ['https://i.imgur.com/eUrbKtO.jpg', 'https://github.com/DiSiqueira/DSDownload/archive/1.4.0.1.tar.gz']
+urls = ['https://i.imgur.com/eUrbKtO.jpg', 'https://github.com/DiSiqueira/DSDownload/archive/1.6.0.0.tar.gz']
 workers = 2
 output = 'My-Files'
 
@@ -73,7 +74,7 @@ DSDownload(urls, workers, output)
 
 ## Program Help
 
-![](https://i.imgur.com/0EXBDFM.png)
+![](https://i.imgur.com/NTzkmKJ.png)
 
 ## Contributing
 
