@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
   name = 'DSDownload',
-  version = '1.6.0.0',
+  version = '1.6.0.2',
   description = 'Program and module for download queue optimization using multi-thread.',
   url = 'https://github.com/DiSiqueira/DSDownload',
   author = 'Diego Siqueira',
