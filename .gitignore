@@ -58,4 +58,4 @@ docs/_build/
 # PyBuilder
 target/
 
-downloads/
+.idea/

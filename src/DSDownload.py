@@ -5,21 +5,14 @@ Diego Martins de Siqueira
 MIT License
 DSDownload - DSDownload is a fully featured download library with focus on performance
 """
-import sys
-
-if sys.version_info[0] == 2:
-    import Queue
-    import urllib2
-else:
-    import queue as Queue
-    import urllib.request as urllib2
-
 import threading
 import os
 import logging
-    
-class downloadthread(threading.Thread):
+import queue as Queue
+import urllib.request as urllib2
 
+
+class DownloadThread(threading.Thread):
     colors = [
         '\033[91m',
         '\033[92m',
@@ -33,18 +26,19 @@ class downloadthread(threading.Thread):
         '\033[99m',
     ]
 
-    colorReset = '\033[0m'
+    color_reset = '\033[0m'
 
-    def __init__(self, queue, destFolder = 'downloads'):
-        super(downloadthread, self).__init__()
+    def __init__(self, queue, dest_folder='downloads'):
+        super(DownloadThread, self).__init__()
 
-        self._queue         = queue
-        self._destFolder    = destFolder
-        self.daemon         = True
+        self._queue = queue
+        self._dest_folder = dest_folder
+        self.daemon = True
 
-        self._handlefolder(self._destFolder)
+        self._handle_folder(self._dest_folder)
 
-    def _handlefolder(self, folder):
+    @staticmethod
+    def _handle_folder(folder):
         logging.debug('Testing Folder: ' + folder)
         if not os.path.exists(folder):
             logging.debug('Folder not found')
@@ -59,9 +53,9 @@ class downloadthread(threading.Thread):
             logging.debug('URL:' + url)
 
             try:
-                logging.debug('Preparing to Download url:'+ url)
-                self.prepareDownload(url)
-                logging.debug('Download complete url:'+ url)
+                logging.debug('Preparing to Download url:' + url)
+                self.prepare_download(url)
+                logging.debug('Download complete url:' + url)
 
             except Exception as e:
                 logging.debug('Error downloading')
@@ -70,97 +64,97 @@ class downloadthread(threading.Thread):
             logging.debug('Task Done!')
             self._queue.task_done()
 
-    def getColor(self,num):
+    def get_color(self, num):
         logging.debug('Getting Color')
-        colorIndex = int(num) % len(self.colors)
+        color_index = int(num) % len(self.colors)
 
-        logging.debug('ColorIndex to Worker' + str(num) + ': '+ str(colorIndex))
-        return self.colors[colorIndex]
+        logging.debug('ColorIndex to Worker' + str(num) + ': ' + str(color_index))
+        return self.colors[color_index]
 
-    def getFileName(self, headers, url):
+    @staticmethod
+    def get_file_name(headers, url):
 
         logging.debug('Getting Content Disposition')
-        conDisposition = headers.get('Content-Disposition')
+        con_disposition = headers.get('Content-Disposition')
 
-        if conDisposition:
+        if con_disposition:
             logging.debug('Content Disposition Found')
             logging.debug('Searching for filename')
-            conName = conDisposition.split('filename=')[-1].replace('"','').replace(';','')
+            con_name = con_disposition.split('filename=')[-1].replace('"', '').replace(';', '')
 
-            if conName:
-                logging.debug('Filename found: '+conName)
-                return conName
+            if con_name:
+                logging.debug('Filename found: ' + con_name)
+                return con_name
 
         logging.debug('Spliting URL for filename')
-        fileName = url.split('/')[-1]
-        logging.debug('Filename: ' + fileName)
+        file_name = url.split('/')[-1]
+        logging.debug('Filename: ' + file_name)
 
-        return fileName
+        return file_name
 
-
-    def prepareDownload(self, url):
+    def prepare_download(self, url):
 
         wnum = threading.current_thread().name.split('-')[-1]
         logging.debug('Finding Worker number: ' + wnum)
 
-        color = self.getColor(wnum)
+        color = self.get_color(wnum)
 
         logging.debug('Opening connection')
-        urlCon = urllib2.urlopen(url)
+        url_con = urllib2.urlopen(url)
 
         logging.debug('Getting metadata')
-        meta = urlCon.info()
+        meta = url_con.info()
 
-        fileName = self.getFileName(meta, url)
+        file_name = self.get_file_name(meta, url)
 
-        dest = os.path.join(self._destFolder, fileName)
-        logging.debug('Folder: ' + self._destFolder)
+        dest = os.path.join(self._dest_folder, file_name)
+        logging.debug('Folder: ' + self._dest_folder)
         logging.debug('Destination: ' + dest)
 
         logging.debug('Opening file')
-        destFile = open(dest, 'wb')
-
+        dest_file = open(dest, 'wb')
 
         logging.debug('Getting file size')
-        fileSize = meta.get("Content-Length")
-        logging.debug('File size:' + str(fileSize))
+        file_size = meta.get("Content-Length")
+        logging.debug('File size:' + str(file_size))
 
-        print(color + "Downloading: %s Bytes: %s" % (fileName, fileSize) + self.colorReset)
+        print(color + "Downloading: %s Bytes: %s" % (file_name, file_size) + self.color_reset)
 
-        fileSizeDL = 0
-        blockSize = 8192
-        logging.debug('Block size:' + str(blockSize))
+        file_size = 0
+        block_size = 8192
+        logging.debug('Block size:' + str(block_size))
 
         while True:
-            buffer = urlCon.read(blockSize)
+            buffer = url_con.read(block_size)
             if not buffer:
                 break
 
-            logging.debug('Total Downloaded: ' + str(fileSizeDL))
-            fileSizeDL += len(buffer)
-            destFile.write(buffer)
+            logging.debug('Total Downloaded: ' + str(file_size))
+            file_size += len(buffer)
+            dest_file.write(buffer)
 
-        logging.debug('Total Downloaded: ' + str(fileSizeDL))
+        logging.debug('Total Downloaded: ' + str(file_size))
         logging.debug('Closing file')
-        destFile.close()
+        dest_file.close()
 
-def DSDownload(urlList, workers = 5, folderPath = 'downloads'):
+
+def DSDownload(url_list, workers=5, folder_path='downloads'):
     logging.debug('Starting DSDownload')
     queue = Queue.Queue()
     logging.debug('Instantiating Queue')
 
-    for url in urlList:
+    for url in url_list:
         logging.debug('Add url to Queue: ' + url)
         queue.put(url)
 
     logging.debug('Testing number of Workers')
-    workers = workers if workers < len(urlList) else len(urlList)
-    logging.debug('Workers:'+str(workers))
+    workers = workers if workers < len(url_list) else len(url_list)
+    logging.debug('Workers:' + str(workers))
 
     for worker in range(workers):
         worker = str(worker + 1)
         logging.debug('Instantiating Worker: ' + worker)
-        t = downloadthread(queue, folderPath)
+        t = DownloadThread(queue, folder_path)
         logging.debug('Starting Worker: ' + worker)
         t.start()
 
