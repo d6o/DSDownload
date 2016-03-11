@@ -11,20 +11,21 @@ import argparse
 import logging
 from DSDownload import DSDownload
 
-def main(argv=sys.argv[0]):
-    description =   "DSDownload is a fully featured download library with focus on performance"
+
+def main():
+    description = "DSDownload is a fully featured download library with focus on performance"
     parser = argparse.ArgumentParser(
-        description = description)
+        description=description)
     parser.add_argument("--version", action="version", version='1.6.0.2',
-        help="Version Info")
-    parser.add_argument("--workers", type=int, default=5, 
-        help="Number of parallel downloads. The default is 5.")
-    parser.add_argument("--output", type=str, default="downloads", 
-        help="Output folder")
+                        help="Version Info")
+    parser.add_argument("--workers", type=int, default=5,
+                        help="Number of parallel downloads. The default is 5.")
+    parser.add_argument("--output", type=str, default="downloads",
+                        help="Output folder")
     parser.add_argument('urls', type=str, nargs='+',
-        help='URLs to be downloaded')
+                        help='URLs to be downloaded')
     parser.add_argument("-v", "--verbose", action="store_true",
-        help="increase output verbosity")
+                        help="increase output verbosity")
 
     args = parser.parse_args()
 
@@ -43,5 +44,6 @@ def main(argv=sys.argv[0]):
 
     sys.exit()
 
+
 if __name__ == "__main__":
-   main(sys.argv[1:])
+    main()
