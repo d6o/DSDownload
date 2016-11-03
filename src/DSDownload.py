@@ -100,7 +100,8 @@ class DownloadThread(threading.Thread):
         color = self.get_color(wnum)
 
         logging.debug('Opening connection')
-        url_con = urllib2.urlopen(url)
+        req = urllib2.Request(url, headers={'User-Agent' : "Magic Browser"})
+        urlCon = urllib2.urlopen(req)
 
         logging.debug('Getting metadata')
         meta = url_con.info()
