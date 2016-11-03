@@ -101,7 +101,7 @@ class DownloadThread(threading.Thread):
 
         logging.debug('Opening connection')
         req = urllib2.Request(url, headers={'User-Agent' : "Magic Browser"})
-        urlCon = urllib2.urlopen(req)
+        url_con = urllib2.urlopen(req)
 
         logging.debug('Getting metadata')
         meta = url_con.info()
