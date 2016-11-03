@@ -9,7 +9,7 @@ import threading
 import os
 import logging
 import queue as Queue
-import urllib.request as urllib2
+import urllib2
 
 
 class DownloadThread(threading.Thread):
