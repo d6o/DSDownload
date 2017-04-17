@@ -59,3 +59,7 @@ docs/_build/
 target/
 
 .idea/
+
+# MacOS
+.DS_Store
+.DS_Store
