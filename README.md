@@ -61,7 +61,7 @@ $ dsdownload --output my-images --workers 2 https://github.com/DiSiqueira/DSDown
 ## Module Usage
 The module allows you to download url lists in your own Python programs without going through the command line. Here's an example of it's usage:
 
-###Example
+### Example
 ```python
 from DSDownload import DSDownload
 
